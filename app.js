@@ -3,16 +3,16 @@ const app = express();
 const puerto = process.env.PORT || 3000;
 app.use(express.json())
 //Se crea la base de datos
-let categorias=[{id:0, nombre:"pelicula 0",descripcion:"descripcion 0", peliculas:2000},
-                 {id:1, nombre:"pelicula 1",descripcion:"descripcion 1", peliculas:2001},
-                 {id:2, nombre:"pelicula 2",descripcion:"descripcion 2", peliculas:2002},
-                 {id:3, nombre:"pelicula 3",descripcion:"descripcion 3", peliculas:2003},
-                 {id:4, nombre:"pelicula 4",descripcion:"descripcion 4", peliculas:2004},
-                 {id:5, nombre:"pelicula 5",descripcion:"descripcion 5", peliculas:2005},
-                 {id:6, nombre:"pelicula 6",descripcion:"descripcion 6", peliculas:2006},
-                 {id:7, nombre:"pelicula 7",descripcion:"descripcion 7", peliculas:2007},
-                 {id:8, nombre:"pelicula 8",descripcion:"descripcion 8", peliculas:2008},
-                 {id:9, nombre:"pelicula 9",descripcion:"descripcion 9", peliculas:2009},];
+let categorias=[{id:0, nombre:"categoria 0",descripcion:"descripcion 0", peliculas:2000},
+                 {id:1, nombre:"categoria 1",descripcion:"descripcion 1", peliculas:2001},
+                 {id:2, nombre:"categoria 2",descripcion:"descripcion 2", peliculas:2002},
+                 {id:3, nombre:"categoria 3",descripcion:"descripcion 3", peliculas:2003},
+                 {id:4, nombre:"categoria 4",descripcion:"descripcion 4", peliculas:2004},
+                 {id:5, nombre:"categoria 5",descripcion:"descripcion 5", peliculas:2005},
+                 {id:6, nombre:"categoria 6",descripcion:"descripcion 6", peliculas:2006},
+                 {id:7, nombre:"categoria 7",descripcion:"descripcion 7", peliculas:2007},
+                 {id:8, nombre:"categoria 8",descripcion:"descripcion 8", peliculas:2008},
+                 {id:9, nombre:"categoria 9",descripcion:"descripcion 9", peliculas:2009},];
 //Se genera la consulta de todos las categorias
 app.get('/socios/v1/categorias',(req,res)=>{
     if(categorias){
@@ -35,13 +35,13 @@ app.get('/socios/v1/categorias/:id', (req, res) => {
     if (pelicula) {
         res.status(200).json({
             estado: 1,
-            mensaje: "Sí se encontró la pelicula",
+            mensaje: "Sí se encontró la categoría",
             pelicula: pelicula
         })
     } else {
         res.status(404).json({
             estado: 0,
-            mensaje: "pelicula no encontrada",
+            mensaje: "categoria no encontrada",
             pelicula: {}
         })
     }
@@ -68,7 +68,7 @@ app.post('/socios/v1/categorias',(req,res)=>{
             //Todo Ok de parte del cliente y el servidor
             res.status(201).json({
                 estado:1,
-                mensaje: "Pelicula creada",
+                mensaje: "categoria creada",
                 nuevoPelicula: nuevoPelicula
             })
         }else{
@@ -102,7 +102,7 @@ app.put('/socios/v1/categorias/:id',(req,res)=>{
             categorias[posActualizar].nombre=nombre;
             res.status(200).json({
                 estado:1,
-                mensaje:"pelicula actualizada",
+                mensaje:"categoria actualizada",
                 categorias:categorias[posActualizar]
             })
         }else{
@@ -124,7 +124,7 @@ app.delete('/socios/v1/categorias/:id',(req,res)=>{
         categorias.splice(indiceEliminar,1);
         res.status(201).json({
             estado:1,
-            mensaje:"pelicula eliminada con exito"
+            mensaje:"catgoria eliminada con exito"
         })
 
     }
